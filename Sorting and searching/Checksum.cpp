@@ -1,47 +1,53 @@
 
-#include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
 int main() {
 	int t;
-	cin >> t;			
+	cin >> t;
+	int n;
 	while(t--)
 	{
-		int a,b,c,d;
-		cin>>a>>b>>c>>d;
-		int ev=0;int z=0;
+		cin>>n;
+		vector<long long> a(n);
+		for(int i=0;i<n;i++)
+		cin>>a[i];
+		sort(a.begin(),a.end());
+		long long check=0;
+		int j=n;
+			for(int i=n-1;i>=(n/2);i--)	
+	{
+						check+=a[i]*j;
+					//	cout<<check<<"*"<<j<<"\t";
+						j-=2;
+	}		
+	j=n-1;
+	if (n%2==0)
+	{
+			for(int i=0;i<=(n/2);i++)	
+	{
+		if(j<=0)
+		break;
+						check-=a[i]*j;
+					//	cout<<check<<"*"<<j<<"\t";
+						j-=2;
+	}		
+	}
+	else
+	{
+				for(int i=0;i<(n/2);i++)	
+	{
+			if(j<=0)
+		break;
+						check-=a[i]*j;
+					//	cout<<check<<"*"<<j<<"\t";
+						j-=2;
+	}		
+	}
 
-			if(a%2==0)
-			++ev;
-			if(b%2==0)
-			++ev;
-			if(c%2==0)
-			++ev;
-			if(d%2==0)
-			++ev;
+		cout<<check<<"\n";
 
-			if(a==0)
-			z++;
-			if(b==0)
-			z++;
-			if(c==0)
-			z++;
-			if(z==1)
-			{
-				if(ev==3||ev==4)
-				{cout<<"Bob\n";continue;}
-				else
-				{cout<<"Alice\n";continue;}
-			}
-		//	cout<<ev;
-			if(ev!=2)
-			{
-				cout<<"Bob\n";
-			}
-			else
-					cout<<"Alice\n";
-
-	}							// Reading input from STDIN
+	}										// Reading input from STDIN
 }
 
