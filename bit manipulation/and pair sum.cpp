@@ -9,7 +9,6 @@ int main()
 	while(t--)
 	{
 		cin>>n;
-		//string a[n];
 		vector<ll> a(n);
 		for(int i=0;i<n;i++)
 		{
